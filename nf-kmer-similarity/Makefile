@@ -9,9 +9,10 @@ merkin2012_aws:
 		-profile aws
 
 merkin2012_local:
-	nextflow run czbiohub/nf-kmer-similarity -latest --sra "SRP016501" \
-		-r olgabot/support-csv-directory-or-sra \
-		-profile local
+	sudo /home/olga/bin/nextflow run czbiohub/nf-kmer-similarity -latest --sra "SRP016501" \
+                -r olgabot/support-csv-directory-or-sra \
+		-work-dir /mnt/ibm_lg/olga/nextflow-workdir/ \
+                -profile local
 
 
 choanoflagellates:
@@ -24,4 +25,5 @@ choanoflagellates_local:
 	nextflow run czbiohub/nf-kmer-similarity \
 	 	-r olgabot/support-csv-directory-or-sra \
 		-latest --sra "PRJNA419411" \
+		-work-dir /mnt/ibm_lg/olga/nextflow-workdir/ \
 		-profile local
