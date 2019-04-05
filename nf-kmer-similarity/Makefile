@@ -4,4 +4,15 @@ human_mouse_zebrafish:
 
 
 merkin2012:
-	nextflow run czbiohub/nf-kmer-similarity -latest --sra "SRP016501" -profile aws
+	nextflow run czbiohub/nf-kmer-similarity -latest --sra "SRP016501" \
+		-profile aws
+
+
+choanoflagellates:
+	nextflow run czbiohub/nf-kmer-similarity -latest --sra "PRJNA419411" \
+		-profile aws
+
+
+choanoflagellates_local:
+	nextflow run czbiohub/nf-kmer-similarity -latest --sra "PRJNA419411" \
+		-profile local
