@@ -1,0 +1,6 @@
+run:
+	nextflow run biocorecrg/indrop \
+		--pairs s3://olgabot-maca/sra/homo_sapiens/indrop/transplant_kidney_prjna431401/SRR6506827_pass_1.fastq.gz \
+		s3://olgabot-maca/sra/homo_sapiens/indrop/transplant_kidney_prjna431401/SRR6506827_pass_1.fastq.gz \
+		--genome s3://czbiohub-reference/gencode/human/v29/GRCh38.p12.genome.fa.gz \
+		-e.process.executor=awsbatch -latest
