@@ -24,6 +24,5 @@ transcriptomes:
                 --outdir s3://kmer-hashing/choanoflagellates/richter2018/assembled_transcriptomes/ \
                 -r olgabot/support-csv-directory-or-sra \
 		--molecules dna \
-                -latest --directories /mnt/ibm_lg/olga/figshare/choanoflagellates_richter2018/1_choanoflagellate_transcriptomes/*.fasta \
-                -work-dir /mnt/pureScratch/olga/nextflow/ \
+                -latest --fastas '/home/olga/data/figshare/choanoflagellates_richter2018/1_choanoflagellate_transcriptomes/*.fasta' \
                 -profile local
