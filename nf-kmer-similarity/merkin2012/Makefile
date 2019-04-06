@@ -6,7 +6,7 @@ aws:
 		-r olgabot/support-csv-directory-or-sra \
 		-profile aws
 
-local:
+sra_local:
 	sudo /home/olga/bin/nextflow run czbiohub/nf-kmer-similarity -latest --sra "SRP016501" \
 		--outdir s3://kmer-hashing/multispecies/merkin2012/ \
                 -r olgabot/support-csv-directory-or-sra \
@@ -15,5 +15,13 @@ local:
 
 move_workdir:
 	ls -1 ${D1} | xargs -I {} -P 8 -n 1 sudo rsync -avh ${D1}/{} ${D2}
+
+
+local:
+	sudo /home/olga/bin/nextflow run czbiohub/nf-kmer-similarity -latest \
+		--read_pairs /home/olga/data/sra-explorer/merkin2012/*{1,2}.fastq.gz \
+		--outdir s3://kmer-hashing/multispecies/merkin2012/ \
+                -r olgabot/support-csv-directory-or-sra \
+                -profile local
 
 
