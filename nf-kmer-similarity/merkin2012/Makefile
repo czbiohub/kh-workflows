@@ -20,7 +20,7 @@ move_workdir:
 local:
 	sudo /home/olga/bin/nextflow run czbiohub/nf-kmer-similarity -latest \
 		--read_pairs /home/olga/data/sra-explorer/merkin2012/*{1,2}.fastq.gz \
-		--outdir s3://kmer-hashing/multispecies/merkin2012/ \
+		--outdir /home/olga/data/kmer-hashing/multispecies/merkin2012/ \
                 -r olgabot/support-csv-directory-or-sra \
                 -profile local
 
