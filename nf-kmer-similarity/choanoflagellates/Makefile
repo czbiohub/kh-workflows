@@ -37,3 +37,9 @@ transcriptomes:
                 -latest --fastas '/home/olga/data/figshare/choanoflagellates_richter2018/1_choanoflagellate_transcriptomes/*.fasta' \
 		-resume \
                 -profile local
+
+
+sync_transcriptomes:
+	aws s3 sync \
+		~/data/kmer-hashing/choanoflagellates/richter2018/assembled_transcriptomes/ \
+		s3://kmer-hashing/choanoflagellates/richter2018/assembled_transcriptomes/
