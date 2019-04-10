@@ -25,3 +25,7 @@ local:
                 -profile local
 
 
+sync:
+	aws s3 sync \
+		/home/olga/data/kmer-hashing/multispecies/merkin2012 \
+		s3://kmer-hashing/multispecies/merkin2012/
