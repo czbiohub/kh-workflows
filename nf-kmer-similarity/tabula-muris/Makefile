@@ -1,0 +1,6 @@
+run_aws:
+	nextflow run czbiohub/nf-kmer-similarity -latest -profile aws \
+		--read_pairs 's3://czb-maca/Plate_seq/3_month/**{R1,R2}*.fastq.gz' \
+		-r olgabot/index \
+		--index --log2-sketch-sizes 10,11,12,13 \
+		--molecules protein --ksizes 21,27
