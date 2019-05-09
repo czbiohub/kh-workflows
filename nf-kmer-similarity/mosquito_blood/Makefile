@@ -10,13 +10,13 @@ download:
 	mkdir -p ${IN_DIR}
 	aws s3 sync ${READS_DIR} ${IN_DIR}
 
-local:
+aws:
 	#mkdir -p ${OUT_DIR}
 	/mnt/data/nextflow run czbiohub/nf-kmer-similarity -latest \
 		-r master \
 		--read_pairs '/mnt/data/fastq/*{1,2}.fastq.gz' \
 		--outdir ${OUT_DIR} \
-	  -profile local
+	  -profile aws
 
 
 
