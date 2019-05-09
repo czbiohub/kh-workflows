@@ -9,4 +9,4 @@ merkin2012:
 
 
 mosquito_blood:
-	mkdir -p ${DIR}/mosquito_blood; cd ${DIR}/mosquito_blood ; parallel --jobs 16 < mosquito_blood.sh
+	mkdir -p ${DIR2}/mosquito_blood; cd ${DIR2}/mosquito_blood ; parallel --jobs 16 < mosquito_blood.sh

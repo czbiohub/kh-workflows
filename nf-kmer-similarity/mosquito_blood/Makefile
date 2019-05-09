@@ -1,14 +1,24 @@
-OUT_DIR=/home/olga/data/kmer-hashing/multispecies/merkin2012/
-S3_DIR=s3://kmer-hashing/multispecies/merkin2012/
+OUT_DIR=/mnt/data/kmer-hashing/
+READS_DIR= s3://kmer-hashing/rawdata/mosquito_blood/sra/
+IN_DIR= /mnt/data/fastq/
+S3_DIR=
+
 
 all: local sync
 
+download:
+	mkdir -p ${IN_DIR}
+	aws s3 sync ${READS_DIR} ${IN_DIR}
+
 local:
-	nextflow run czbiohub/nf-kmer-similarity -latest \
+	#mkdir -p ${OUT_DIR}
+	/mnt/data/nextflow run czbiohub/nf-kmer-similarity -latest \
 		-r master \
-		--read_pairs '/home/olga/data/sra-explorer/merkin2012/*{1,2}.fastq.gz' \
+		--read_pairs '/mnt/data/fastq/*{1,2}.fastq.gz' \
 		--outdir ${OUT_DIR} \
 	  -profile local
+
+
 
 # After local is done ,run sync
 sync: local
