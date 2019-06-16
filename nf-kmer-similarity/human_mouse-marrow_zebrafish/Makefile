@@ -1,0 +1,12 @@
+run_aws:
+	nextflow run czbiohub/nf-kmer-similarity -latest -profile aws \
+		-name hematopoesis_human_mouse-marrow_zebrafish_v5 \
+		-r olgabot/index \
+		--outdir s3://kmer-hashing/hematopoeisis/human_mouse-marrow_zebrafish/ \
+		--samples s3://kmer-hashing/hematopoeisis/human_mouse-marrow_zebrafish/samples.csv \
+		--create_sbt_index \
+		--log2_sketch_sizes 12 \
+		--molecules protein \
+		--ksizes 21,27 -resume 
+
+
