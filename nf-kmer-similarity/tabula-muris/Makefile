@@ -19,5 +19,5 @@ local:
 		--no_compare
 
 samples.csv:
-	aws s3 cp  s3://czb-maca/Plate_seq/3_month/fastqs.csv - | sed  '0,/R1/ s//read1/' | sed '0,/R2/ s//read2/' > samples.csv
+	aws s3 cp s3://czb-maca/Plate_seq/3_month/fastqs.csv - | sed  '0,/R1/ s//read1/' | sed '0,/R2/ s//read2/' > samples.csv
 	aws s3 cp samples.csv s3://czb-maca/Plate_seq/3_month/fastqs_read1_read2.csv
