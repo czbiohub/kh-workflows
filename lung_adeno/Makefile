@@ -29,7 +29,7 @@ rnaseq_local:
 		-latest \
 		-resume \
 		--reads "s3://darmanis-group/singlecell_lungadeno/non_immune/nonImmune_fastqs_9.27/**{R1,R2}*.fastq.gz" \
-		-profile docker,czbiohub_aws \
+		-profile docker \
 		--saveReference \
 		--saveTrimmed \
 		--saveAlignedIntermediates \
