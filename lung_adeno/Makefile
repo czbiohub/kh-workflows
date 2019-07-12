@@ -8,19 +8,38 @@ concat:
 
 rnaseq:
 	nextflow run czbiohub/rnaseq \
-            -r olgabot/merged-salmon \
-            -latest \
-            --reads "s3://darmanis-group/singlecell_lungadeno/non_immune/nonImmune_fastqs_9.27/**{R1,R2}*.fastq.gz" \
-            -profile czbiohub_aws \
-            --saveReference \
-            --saveTrimmed \
-            --saveAlignedIntermediates \
-            --outdir "s3://kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/" \
-            -resume \
-            -work-dir "s3://kmer-hashing/nextflow-intermediates/" \
-            --custom_config_base https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-update \
-            --pseudo_aligner salmon \
-						--genome GRCh38
+		-r olgabot/merged-salmon \
+		-latest \
+		-resume \
+		--reads "s3://darmanis-group/singlecell_lungadeno/non_immune/nonImmune_fastqs_9.27/**{R1,R2}*.fastq.gz" \
+		-profile czbiohub_aws_highpriority \
+		--saveReference \
+		--saveTrimmed \
+		--saveAlignedIntermediates \
+		--outdir "s3://kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/" \
+		-work-dir "s3://kmer-hashing/nextflow-intermediates/" \
+		--pseudo_aligner salmon \
+		--genome GRCh38 \
+		--email olga.botvinnik@czbiohub.org \
+		--skipQC
+
+rnaseq_local:
+	nextflow run czbiohub/rnaseq \
+		-r olgabot/merged-salmon \
+		-latest \
+		-resume \
+		--reads "s3://darmanis-group/singlecell_lungadeno/non_immune/nonImmune_fastqs_9.27/**{R1,R2}*.fastq.gz" \
+		-profile docker,czbiohub_aws \
+		--saveReference \
+		--saveTrimmed \
+		--saveAlignedIntermediates \
+		--outdir "/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/" \
+		-work-dir "/home/olga/ibm_sm/nextflow-intermediates/" \
+		--pseudo_aligner salmon \
+		--genome GRCh38 \
+		--email olga.botvinnik@czbiohub.org \
+		--skipQC \
+		--max_cpus 48
 
 kmer_aws:
 	nextflow run czbiohub/nf-kmer-similarity \
