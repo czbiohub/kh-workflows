@@ -6,6 +6,11 @@ concat:
 		-resume --outdir s3://kmer-hashing/rawdata/botryllus/
 
 
+sync:
+	aws s3 sync --exclude "*" --include "*.fastq.gz" \
+		s3://darmanis-group/singlecell_lungadeno/non_immune/nonImmune_fastqs_9.27/  \
+		/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/rawdata
+
 rnaseq:
 	nextflow run czbiohub/rnaseq \
 		-r olgabot/merged-salmon \
@@ -28,7 +33,7 @@ rnaseq_local:
 		-r olgabot/merged-salmon \
 		-latest \
 		-resume \
-		--reads "s3://darmanis-group/singlecell_lungadeno/non_immune/nonImmune_fastqs_9.27/**{R1,R2}*.fastq.gz" \
+		--reads '/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/rawdata/**{R1,R2}*.fastq.gz' \
 		-profile docker \
 		--saveReference \
 		--saveTrimmed \
@@ -39,7 +44,8 @@ rnaseq_local:
 		--genome GRCh38 \
 		--email olga.botvinnik@czbiohub.org \
 		--skipQC \
-		--max_cpus 48
+		--max_cpus 32 \
+		--max_memory 256.GB
 
 kmer_aws:
 	nextflow run czbiohub/nf-kmer-similarity \
