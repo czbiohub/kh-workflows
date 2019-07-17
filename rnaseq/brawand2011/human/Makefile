@@ -10,7 +10,7 @@ paired_end:
 		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/paired_end/*'$$SPECIES'*{1,2}.fastq.gz' \
 		-profile docker,czbiohub_local \
 		--saveTrimmed \
-		--outdir "/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/" \
+		--outdir "/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq/" \
 		-work-dir "/home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/" \
 		--custom_config_base "https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-local" \
 		--pseudo_aligner salmon \
@@ -25,7 +25,7 @@ single_end:
 		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/single_end/*'$$SPECIES'*.fastq.gz' \
 		-profile docker,czbiohub_local \
 		--saveTrimmed \
-		--outdir "/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/" \
+		--outdir "/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq/" \
 		-work-dir "/home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/" \
 		--custom_config_base "https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-local" \
 		--pseudo_aligner salmon \
