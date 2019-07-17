@@ -12,7 +12,7 @@ paired_end:
 		--saveTrimmed \
 		--outdir "/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq/" \
 		-work-dir "/home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/" \
-		--custom_config_base "https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-local" \
+		--custom_config_base "/home/olga/code/nf-core/configs" \
 		--pseudo_aligner salmon \
 		--genome GRCh38 \
 		--email olga.botvinnik@czbiohub.org
@@ -27,7 +27,7 @@ single_end:
 		--saveTrimmed \
 		--outdir "/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq/" \
 		-work-dir "/home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/" \
-		--custom_config_base "https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-local" \
+		--custom_config_base "/home/olga/code/nf-core/configs" \
 		--pseudo_aligner salmon \
 		--genome GRCh38 \
 		--email olga.botvinnik@czbiohub.org \
