@@ -12,7 +12,7 @@ paired_end:
 		--saveTrimmed \
 		--outdir "/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/" \
 		-work-dir "/home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/" \
-		--custom_config_base "https://raw.githubusercontent.com/nf-core/configs/olgabot/czb-local"
+		--custom_config_base "https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-local" \
 		--pseudo_aligner salmon \
 		--genome GRCh38 \
 		--email olga.botvinnik@czbiohub.org
@@ -22,12 +22,12 @@ single_end:
 		-r olgabot/merged-salmon \
 		-latest \
 		-resume \
-		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/single_end/*'hsa'*.fastq.gz' \
+		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/single_end/*'$$SPECIES'*.fastq.gz' \
 		-profile docker,czbiohub_local \
 		--saveTrimmed \
 		--outdir "/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/" \
 		-work-dir "/home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/" \
-		--custom_config_base "https://raw.githubusercontent.com/nf-core/configs/olgabot/czb-local"
+		--custom_config_base "https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-local" \
 		--pseudo_aligner salmon \
 		--genome GRCh38 \
 		--email olga.botvinnik@czbiohub.org \
