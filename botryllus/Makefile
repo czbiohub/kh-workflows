@@ -43,5 +43,5 @@ kmer_subset:
 		-r olgabot/dayhoff \
 		--read_pairs 's3://kmer-hashing/botryllus/nfcore-rnaseq/trim_galore/CellPopulation3*{R1,R2}*.fq.gz' \
 		--outdir 's3://kmer-hashing/botryllus/nf-kmer-similarity/' \
-		--custom_config_base https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-update \
+		--custom_config_base $$HOME/code/nf-core/configs \
 		-profile czbiohub_aws
