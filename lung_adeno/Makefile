@@ -48,17 +48,24 @@ rnaseq_local:
 		--max_memory 256.GB
 
 kmer_aws:
+	aws s3 rm s3://kmer-hashing/lung_adenocarcinoma/nf-kmer-similarity/pipeline_info/ 
 	nextflow run czbiohub/nf-kmer-similarity \
 		-r olgabot/dayhoff \
 		--read_pairs 's3://kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/trim_galore/*{R1,R2}*.fq.gz' \
 		--outdir 's3://kmer-hashing/lung_adenocarcinoma/nf-kmer-similarity/' \
 		--custom_config_base https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-update \
-		-profile aws
+		-profile czbiohub_aws_highpriority \
+		--tracedir ./kmer_aws_trace \
+		--log2_sketch_sizes 10,12 \
+		-resume
 
 kmer_subset:
 	nextflow run czbiohub/nf-kmer-similarity \
 		-r olgabot/dayhoff \
 		--read_pairs 's3://kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/trim_galore/A10*{R1,R2}*.fq.gz' \
 		--outdir 's3://kmer-hashing/lung_adenocarcinoma/nf-kmer-similarity/' \
-		--custom_config_base https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-update \
-		-profile aws
+		-profile czbiohub_aws_highpriority \
+		--tracedir ./kmer_aws_trace \
+		--log2_sketch_sizes 10,12
+#		--custom_config_base https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-update \
+
