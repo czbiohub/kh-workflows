@@ -47,6 +47,21 @@ rnaseq_local:
 		--max_cpus 32 \
 		--max_memory 256.GB
 
+kmer_local:
+	nextflow run czbiohub/nf-kmer-similarity \
+		-r olgabot/dayhoff \
+		-latest \
+		--read_pairs '/home/olga/pureScratch/kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/trim_galore/*{R1,R2}*.fq.gz' \
+		--outdir /home/olga/pureScratch/kmer-hashing/lung_adenocarcinoma/nf-kmer-similarity/ \
+		--custom_config_base ${HOME}/code/nf-core/configs/ \
+		-profile czbiohub_local \
+		--tracedir ./kmer_local_trace \
+		--log2_sketch_sizes 10,12 \
+		--ksizes 21,27 \
+		-resume
+
+
+
 kmer_aws:
 	aws s3 rm s3://kmer-hashing/lung_adenocarcinoma/nf-kmer-similarity/pipeline_info/ 
 	nextflow run czbiohub/nf-kmer-similarity \
