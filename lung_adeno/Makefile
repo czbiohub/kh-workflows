@@ -8,15 +8,15 @@ concat:
 
 sync:
 	aws s3 sync --exclude "*" --include "*.fastq.gz" \
-		s3://darmanis-group/singlecell_lungadeno/non_immune/nonImmune_fastqs_9.27/  \
-		/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/rawdata
+		s3://darmanis-group/singlecell_lungadeno/rawdata/fastqs/  \
+		/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/updated_rawdata/fastqs
 
 rnaseq:
 	nextflow run czbiohub/rnaseq \
 		-r olgabot/merged-salmon \
 		-latest \
 		-resume \
-		--reads "s3://darmanis-group/singlecell_lungadeno/non_immune/nonImmune_fastqs_9.27/**{R1,R2}*.fastq.gz" \
+		--reads "s3://darmanis-group/singlecell_lungadeno/updated_rawdata/fastqs/**{R1,R2}*.fastq.gz" \
 		-profile czbiohub_aws_highpriority \
 		--saveReference \
 		--saveTrimmed \
@@ -33,12 +33,12 @@ rnaseq_local:
 		-r olgabot/merged-salmon \
 		-latest \
 		-resume \
-		--reads '/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/rawdata/**{R1,R2}*.fastq.gz' \
+		--reads '/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/updated_rawdata/**{R1,R2}*.fastq.gz' \
 		-profile docker \
 		--saveReference \
 		--saveTrimmed \
 		--saveAlignedIntermediates \
-		--outdir "/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/" \
+		--outdir "/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/updated_fastqs_nfcore-rnaseq/" \
 		-work-dir "/home/olga/ibm_sm/nextflow-intermediates/" \
 		--pseudo_aligner salmon \
 		--genome GRCh38 \
@@ -65,7 +65,7 @@ kmer_aws:
 	aws s3 rm s3://kmer-hashing/lung_adenocarcinoma/nf-kmer-similarity/pipeline_info/ 
 	nextflow run czbiohub/nf-kmer-similarity \
 		-r olgabot/dayhoff \
-		--read_pairs 's3://kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/trim_galore/*{R1,R2}*.fq.gz' \
+		--read_pairs 's3://kmer-hashing/lung_adenocarcinoma/updated_fastqs_nfcore-rnaseq/trim_galore/*{R1,R2}*.fq.gz' \
 		--outdir 's3://kmer-hashing/lung_adenocarcinoma/nf-kmer-similarity/' \
 		--custom_config_base https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-update \
 		-profile czbiohub_aws_highpriority \
