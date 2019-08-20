@@ -55,9 +55,9 @@ kmer_local:
 		--custom_config_base ${HOME}/code/nf-core/configs/ \
 		-profile czbiohub_local \
 		--tracedir ./kmer_local_trace \
-		--log2_sketch_sizes 9,10,12 \
-		--ksizes 21,27 \
-		-resume
+		--log2_sketch_sizes 12 \
+		--ksizes 21,27,33,51 \
+		-resume --max-time 8h
 
 
 
