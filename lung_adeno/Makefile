@@ -38,7 +38,7 @@ rnaseq_local:
 		--saveReference \
 		--saveTrimmed \
 		--saveAlignedIntermediates \
-		--outdir "/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/updated_fastqs_nfcore-rnaseq/" \
+		--outdir "/home/olga/ibm_lg/kmer-hashing/lung_adenocarcinoma/updated_fastqs_nfcore_rnaseq/" \
 		-work-dir "/home/olga/ibm_sm/nextflow-intermediates/" \
 		--pseudo_aligner salmon \
 		--genome GRCh38 \
@@ -50,7 +50,7 @@ rnaseq_local:
 kmer_local:
 	nextflow run ~/code/nf-core/kmermaid/main.nf \
 		-latest \
-		--read_pairs '/home/olga/pureScratch/kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/trim_galore/*{R1,R2}*.fq.gz' \
+		--read_pairs '/home/olga/pureScratch/kmer-hashing/lung_adenocarcinoma/updated_fastqs_nfcore_rnaseq/trim_galore/*{R1,R2}*.fq.gz' \
 		--outdir /home/olga/pureScratch/kmer-hashing/lung_adenocarcinoma/nf-kmer-similarity/ \
 		--custom_config_base ${HOME}/code/nf-core/configs/ \
 		-profile czbiohub_local \
@@ -65,7 +65,7 @@ kmer_aws:
 	aws s3 rm s3://kmer-hashing/lung_adenocarcinoma/nf-kmer-similarity/pipeline_info/ 
 	nextflow run czbiohub/nf-kmer-similarity \
 		-r olgabot/dayhoff \
-		--read_pairs 's3://kmer-hashing/lung_adenocarcinoma/updated_fastqs_nfcore-rnaseq/trim_galore/*{R1,R2}*.fq.gz' \
+		--read_pairs 's3://kmer-hashing/lung_adenocarcinoma/updated_fastqs_nfcore_rnaseq/trim_galore/*{R1,R2}*.fq.gz' \
 		--outdir 's3://kmer-hashing/lung_adenocarcinoma/nf-kmer-similarity/' \
 		--custom_config_base https://raw.githubusercontent.com/czbiohub/configs/olgabot/czb-update \
 		-profile czbiohub_aws_highpriority \
@@ -76,7 +76,7 @@ kmer_aws:
 kmer_subset:
 	nextflow run czbiohub/nf-kmer-similarity \
 		-r olgabot/dayhoff \
-		--read_pairs 's3://kmer-hashing/lung_adenocarcinoma/nfcore-rnaseq/trim_galore/A10*{R1,R2}*.fq.gz' \
+		--read_pairs 's3://kmer-hashing/lung_adenocarcinoma/updated_fastqs_nfcore_rnaseq/trim_galore/A10*{R1,R2}*.fq.gz' \
 		--outdir 's3://kmer-hashing/lung_adenocarcinoma/nf-kmer-similarity/' \
 		-profile czbiohub_aws_highpriority \
 		--tracedir ./kmer_aws_trace \
