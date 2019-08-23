@@ -5,8 +5,8 @@ SPECIES=ptr
 GENOME=CHIMP2.1.4
 
 paired_end:
-	nextflow run czbiohub/rnaseq \
-		-r olgabot/merged-salmon \
+	nextflow run nf-core/rnaseq \
+		-r dev \
 		-latest \
 		-resume \
 		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/paired_end/*'${SPECIES}'*{1,2}.fastq.gz' \
@@ -20,8 +20,8 @@ paired_end:
 		--email olga.botvinnik@czbiohub.org
 
 single_end:
-	nextflow run czbiohub/rnaseq \
-		-r olgabot/merged-salmon \
+	nextflow run nf-core/rnaseq \
+		-r dev \
 		-latest \
 		-resume \
 		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/single_end/*'${SPECIES}'*.fastq.gz' \
