@@ -6,8 +6,8 @@ local:
 	nextflow run nf-core/kmermaid \
 		-r dev \
 		-latest \
-		--read_pairs '/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq-paired-end/allspecies/trim_galore/*{val_1,val_2}.fq.gz' \
-		--read_singles '/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq-single-end/allspecies/trim_galore/*_trimmed.fq.gz' \
+		--read_pairs ${BRAWAND2011}/nfcore-rnaseq-paired-end/allspecies/trim_galore/'*{1_val_1,2_val_2}.fq.gz' \
+		--read_singles ${BRAWAND2011}/nfcore-rnaseq-single-end/allspecies/trim_galore/'*_trimmed.fq.gz' \
 		-profile czbiohub_local \
 		--log2_sketch_sizes 12 \
 		--ksizes 21,27,33,51 \
