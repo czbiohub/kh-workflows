@@ -11,7 +11,7 @@ local:
 		-profile czbiohub_local \
 		--log2_sketch_sizes 12 \
 		--ksizes 21,27,33,51 \
-		--molecules DNA,protein,dayhoff \
+		--molecules dna,protein,dayhoff \
 		--custom_config_base ${HOME}/code/nf-core/configs/ \
 		--outdir ${BRAWAND2011}/kmermaid/ \
 		-resume --max-time 8h
