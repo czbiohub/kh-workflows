@@ -4,6 +4,7 @@ BRAWAND2011=/home/olga/ibm_lg/kmer-hashing/brawand2011
 
 local:
 	nextflow run nf-core/kmermaid \
+		-r dev \
 		-latest \
 		--read_pairs '/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq-paired-end/allspecies/trim_galore/*{val_1,val_2}.fq.gz' \
 		--read_singles '/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq-single-end/allspecies/trim_galore/*_trimmed.fq.gz' \
