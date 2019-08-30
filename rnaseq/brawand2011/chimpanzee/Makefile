@@ -17,6 +17,7 @@ paired_end:
 		--custom_config_base "/home/olga/code/nf-core/configs" \
 		--pseudo_aligner salmon \
 		--genome ${GENOME} \
+		--gtf /mnt/ibm_lg/olga/czbiohub-reference/igenomes/Pan_troglodytes/Ensembl/CHIMP2.1.4/Annotation/Genes/genes_in_genome.gtf 
 		--email olga.botvinnik@czbiohub.org
 
 single_end:
@@ -33,4 +34,5 @@ single_end:
 		--pseudo_aligner salmon \
 		--genome ${GENOME} \
 		--email olga.botvinnik@czbiohub.org \
+		--gtf /mnt/ibm_lg/olga/czbiohub-reference/igenomes/Pan_troglodytes/Ensembl/CHIMP2.1.4/Annotation/Genes/genes_in_genome.gtf \
 		--singleEnd
