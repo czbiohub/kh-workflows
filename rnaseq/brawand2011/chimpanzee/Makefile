@@ -24,8 +24,8 @@ paired_end:
 		--custom_config_base "/home/olga/code/nf-core/configs" \
 		--pseudo_aligner salmon \
 		--compressedReference \
-		--fasta ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/880/755/GCA_002880755.3_Clint_PTRv2/GCA_002880755.3_Clint_PTRv2_genomic.fna.gz \
-		--gtf ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/880/755/GCA_002880755.3_Clint_PTRv2/GCA_002880755.3_Clint_PTRv2_genomic.gtf.gz \
+		--fasta ~/data_lg/czbiohub-reference/ncbi/genomes/refseq/vertebrate_mammalian/Pan_troglodytes/GCA_002880755.3/GCA_002880755.3_Clint_PTRv2_genomic.fna.gz \
+		--gtf ~/data_lg/czbiohub-reference/ncbi/genomes/refseq/vertebrate_mammalian/Pan_troglodytes/GCA_002880755.3/GCA_002880755.3_Clint_PTRv2_genomic.gtf.gz \
 		--email olga.botvinnik@czbiohub.org \
 		--fc_group_features_type gene_biotype
 
