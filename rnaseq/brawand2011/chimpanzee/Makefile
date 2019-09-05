@@ -4,35 +4,45 @@ SPECIES=ptr
 # igenomes naming
 GENOME=CHIMP2.1.4
 
+# Olga's naming
+SPECIES_OLGA=chimpanzee
+
+OUTDIR_BASE=/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq
+
+all: paired_end single_end
+
 paired_end:
-	nextflow run nf-core/rnaseq \
-		-r dev \
+	nextflow run czbiohub/rnaseq \
+		-r olgabot/merged-gzip-gffread-transgenes \
 		-latest \
 		-resume \
 		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/paired_end/*'${SPECIES}'*{1,2}.fastq.gz' \
 		-profile docker,czbiohub_local \
 		--saveTrimmed \
-		--outdir "/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq/" \
+		--outdir ${OUTDIR_BASE}/${SPECIES_OLGA}/$@ \
 		-work-dir "/home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/" \
 		--custom_config_base "/home/olga/code/nf-core/configs" \
 		--pseudo_aligner salmon \
-		--genome ${GENOME} \
-		--gtf /mnt/ibm_lg/olga/czbiohub-reference/igenomes/Pan_troglodytes/Ensembl/CHIMP2.1.4/Annotation/Genes/genes_in_genome.gtf 
-		--email olga.botvinnik@czbiohub.org
+		--compressedReference \
+		--fasta ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/880/755/GCA_002880755.3_Clint_PTRv2/GCA_002880755.3_Clint_PTRv2_genomic.fna.gz \
+		--gtf ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/880/755/GCA_002880755.3_Clint_PTRv2/GCA_002880755.3_Clint_PTRv2_genomic.gtf.gz \
+		--email olga.botvinnik@czbiohub.org \
+		--fc_group_features_type gene_biotype
 
 single_end:
-	nextflow run nf-core/rnaseq \
-		-r dev \
+	nextflow run czbiohub/rnaseq \
+		-r olgabot/merged-gzip-gffread-transgenes \
 		-latest \
 		-resume \
 		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/single_end/*'${SPECIES}'*.fastq.gz' \
 		-profile docker,czbiohub_local \
 		--saveTrimmed \
-		--outdir "/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq/" \
-		-work-dir "/home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/" \
+		--outdir ${OUTDIR_BASE}/${SPECIES_OLGA}/$@ \
+		-work-dir "/home/olga/ibm_sm/kmer-hashing/nextflow-intermediates/" \
 		--custom_config_base "/home/olga/code/nf-core/configs" \
 		--pseudo_aligner salmon \
 		--genome ${GENOME} \
 		--email olga.botvinnik@czbiohub.org \
-		--gtf /mnt/ibm_lg/olga/czbiohub-reference/igenomes/Pan_troglodytes/Ensembl/CHIMP2.1.4/Annotation/Genes/genes_in_genome.gtf \
-		--singleEnd
+		--gtf ${HOME}/ibm_lg/czbiohub-reference/igenomes/Pan_troglodytes/Ensembl/CHIMP2.1.4/Annotation/Genes/genes_in_genome.gtf \
+		--singleEnd \
+		--fc_group_features_type gene_biotype
