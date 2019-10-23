@@ -14,12 +14,12 @@ COMMON_FLAGS=-r olgabot/merged-gzip-gffread-transgenes \
                 -resume \
                 -profile docker,czbiohub_local \
                 --saveTrimmed \
-                -work-dir ~/ibm_lg/kmer-hashing/nextflow-intermediates/ \
+                -work-dir /home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/ \
                 --custom_config_base ~/code/nf-core/configs \
                 --pseudo_aligner salmon \
                 --compressedReference \
-                --fasta ~/data_lg/czbiohub-reference/ncbi/genomes/refseq/vertebrate_mammalian/Pan_troglodytes/GCA_002880755.3/GCA_002880755.3_Clint_PTRv2_genomic.fna.gz \
-                --gtf ~/data_lg/czbiohub-reference/ncbi/genomes/refseq/vertebrate_mammalian/Pan_troglodytes/GCA_002880755.3/GCA_002880755.3_Clint_PTRv2_genomic.gtf.gz \
+                --fasta /home/olga/data_lg/czbiohub-reference/ncbi/genomes/refseq/vertebrate_mammalian/Pan_troglodytes/GCA_002880755.3/GCA_002880755.3_Clint_PTRv2_genomic.fna.gz \
+                --gtf /home/olga/data_lg/czbiohub-reference/ncbi/genomes/refseq/vertebrate_mammalian/Pan_troglodytes/GCA_002880755.3/GCA_002880755.3_Clint_PTRv2_genomic.gtf.gz \
                 --email olga.botvinnik@czbiohub.org \
                 --fc_group_features_type gbkey \
                 --fc_extra_attributes gene_id \
