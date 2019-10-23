@@ -15,7 +15,7 @@ COMMON_FLAGS=-r 1.4 \
                 -profile docker,czbiohub_local \
                 --saveTrimmed \
                 -work-dir /home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/ \
-                --custom_config_base ~/code/nf-core/configs \
+                --custom_config_base /home/olga/code/nf-core/configs \
                 --pseudo_aligner salmon \
                 --compressedReference \
                 --fasta /home/olga/data_lg/czbiohub-reference/ncbi/genomes/refseq/vertebrate_mammalian/Pan_troglodytes/GCA_002880755.3/GCA_002880755.3_Clint_PTRv2_genomic.fna.gz \
