@@ -21,7 +21,7 @@ COMMON_FLAGS=-r 1.4 \
                 --fasta /home/olga/data_lg/czbiohub-reference/ncbi/genomes/refseq/vertebrate_mammalian/Pan_troglodytes/GCA_002880755.3/GCA_002880755.3_Clint_PTRv2_genomic.fna.gz \
                 --gtf /home/olga/data_lg/czbiohub-reference/ncbi/genomes/refseq/vertebrate_mammalian/Pan_troglodytes/GCA_002880755.3/GCA_002880755.3_Clint_PTRv2_genomic.gtf.gz \
                 --email olga.botvinnik@czbiohub.org \
-                --fc_group_features_type gbkey \
+                --fc_group_features_type gene_biotype \
                 --fc_extra_attributes gene_id \
 
 
