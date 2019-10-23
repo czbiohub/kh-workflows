@@ -9,7 +9,7 @@ SPECIES_OLGA=chimpanzee
 
 OUTDIR_BASE=/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq
 
-COMMON_FLAGS=-r olgabot/merged-gzip-gffread-transgenes \
+COMMON_FLAGS=-r 1.4 \
                 -latest \
                 -resume \
                 -profile docker,czbiohub_local \
