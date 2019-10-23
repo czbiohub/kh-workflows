@@ -28,13 +28,13 @@ COMMON_FLAGS=-r 1.4 \
 all: paired_end single_end
 
 paired_end:
-	nextflow run czbiohub/rnaseq \
+	nextflow run nf-core/rnaseq \
 		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/paired_end/*'${SPECIES}'*{1,2}.fastq.gz' \
 		--outdir ${OUTDIR_BASE}/${SPECIES_OLGA}/$@ \
 		${COMMON_FLAGS}
 
 single_end:
-	nextflow run czbiohub/rnaseq \
+	nextflow run nf-core/rnaseq \
 		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/single_end/*'${SPECIES}'*.fastq.gz' \
 		--outdir ${OUTDIR_BASE}/${SPECIES_OLGA}/$@ \
 		--singleEnd \
