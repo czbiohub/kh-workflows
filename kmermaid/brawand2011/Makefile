@@ -1,5 +1,7 @@
 OUTDIR_BASE=~/code/kmer-hashing/kh-workflows/kmermaid/brawand2011
-
+PAIRED=/mnt/ibm_lg/olga/kmer-hashing/brawand2011/rawdata/paired_end
+SINGLE=/mnt/ibm_lg/olga/kmer-hashing/brawand2011/rawdata/single_end
+PEPTIDES=~/data_lg/czbiohub-reference/ensembl/release-97/fasta/homo_sapiens/pep/Homo_sapiens.GRCh38.pep.all.fa.gz
 
 run:
 	nextflow run \
@@ -7,11 +9,11 @@ run:
 		-r olgabot/khtools-extract-coding \
 		-latest \
 		-profile czbiohub_local,docker \
-		--read_singles '/home/olga/data_lg/kmer-hashing/brawand2011/nfcore-rnaseq-single-end/allspecies/trim_galore/*.fq.gz' \
-		--read_pairs   '/home/olga/data_lg/kmer-hashing/brawand2011/nfcore-rnaseq-paired-end/allspecies/trim_galore/*{1_val_1,2_val_2}.fq.gz' \
+		--read_singles ${SINGLE}/'*.fastq.gz' \
+		--read_pairs ${PAIRED}/'*{R1,R2}.fastq.gz' \
 		--custom_config_base ~/code/nf-core/configs \
 		--molecules dna,protein,dayhoff \
-		--peptide_fasta ~/data_lg/czbiohub-reference/ensembl/release-97/fasta/homo_sapiens/pep/Homo_sapiens.GRCh38.pep.all.fa.gz \
+		--peptide_fasta ${PEPTIDES} \
 		--ksizes 21 \
 		--log2_sketch_sizes 10,12,14,16 \
 		--bloomfilter_tablesize '1e8' \
@@ -29,11 +31,11 @@ run_more_ksizes:
 		-r olgabot/khtools-extract-coding \
 		-latest \
 		-profile czbiohub_local,docker \
-		--read_singles '/home/olga/data_lg/kmer-hashing/brawand2011/nfcore-rnaseq-single-end/allspecies/trim_galore/*.fq.gz' \
-		--read_pairs   '/home/olga/data_lg/kmer-hashing/brawand2011/nfcore-rnaseq-paired-end/allspecies/trim_galore/*{1_val_1,2_val_2}.fq.gz' \
+		--read_singles ${SINGLE}/'*.fastq.gz' \
+		--read_pairs ${PAIRED}/'*{R1,R2}.fastq.gz' \
 		--custom_config_base ~/code/nf-core/configs \
 		--molecules dna,protein,dayhoff \
-		--peptide_fasta ~/data_lg/czbiohub-reference/ensembl/release-97/fasta/homo_sapiens/pep/Homo_sapiens.GRCh38.pep.all.fa.gz \
+		--peptide_fasta ${PEPTIDES} \
 		--ksizes 27,33 \
 		--log2_sketch_sizes 12,14 \
 		--bloomfilter_tablesize '1e8' \
@@ -53,11 +55,11 @@ dayhoff12:
 		-r olgabot/khtools-extract-coding \
 		-latest \
 		-profile czbiohub_local,docker \
-		--read_singles '/home/olga/data_lg/kmer-hashing/brawand2011/nfcore-rnaseq-single-end/allspecies/trim_galore/*.fq.gz' \
-		--read_pairs   '/home/olga/data_lg/kmer-hashing/brawand2011/nfcore-rnaseq-paired-end/allspecies/trim_galore/*{1_val_1,2_val_2}.fq.gz' \
+		--read_singles ${SINGLE}/'*.fastq.gz' \
+		--read_pairs ${PAIRED}/'*{R1,R2}.fastq.gz' \
 		--custom_config_base ~/code/nf-core/configs \
 		--molecules dna,protein,dayhoff \
-		--peptide_fasta ~/data_lg/czbiohub-reference/ensembl/release-97/fasta/homo_sapiens/pep/Homo_sapiens.GRCh38.pep.all.fa.gz \
+		--peptide_fasta ${PEPTIDES} \
 		--ksizes 27,33 \
 		--log2_sketch_sizes 12,14 \
 		--bloomfilter_tablesize '1e8' \
@@ -76,10 +78,11 @@ singles:
 		-r olgabot/khtools-extract-coding \
 		-latest \
 		-profile czbiohub_local,docker \
-		--read_singles '/home/olga/data_lg/kmer-hashing/brawand2011/nfcore-rnaseq-single-end/allspecies/trim_galore/*.fq.gz' \
+		--read_singles ${SINGLE}/'*.fastq.gz' \
+		--read_pairs ${PAIRED}/'*{R1,R2}.fastq.gz' \
 		--custom_config_base ~/code/nf-core/configs \
 		--molecules dna,protein,dayhoff \
-		--peptide_fasta ~/data_lg/czbiohub-reference/ensembl/release-97/fasta/homo_sapiens/pep/Homo_sapiens.GRCh38.pep.all.fa.gz \
+		--peptide_fasta ${PEPTIDES} \
 		--ksizes 21 \
 		--log2_sketch_sizes 10,12,14,16 \
 		--bloomfilter_tablesize '1e8' \
