@@ -1,4 +1,4 @@
-
+OUTDIR_BASE=~/code/kmer-hashing/kh-workflows/kmermaid/brawand2011
 
 
 run:
@@ -23,6 +23,7 @@ run:
 		-resume
 
 run_more_ksizes:
+	PEPTIDE_KSIZE=12
 	nextflow run \
 		nf-core/kmermaid \
 		-r olgabot/khtools-extract-coding \
@@ -38,9 +39,33 @@ run_more_ksizes:
 		--bloomfilter_tablesize '1e8' \
 		--extract_coding_peptide_ksize 11 \
 		--extract_coding_peptide_molecule dayhoff \
-		--outdir /home/olga/data_lg/kmer-hashing/brawand2011/kmermaid/results_dayhoff11_extract_coding_jaccard_threshold05 \
+		--outdir /home/olga/data_lg/kmer-hashing/brawand2011/kmermaid/results_dayhoff11_extract_coding_jaccard_threshold05_more_ksizes \
 		--extract_coding_jaccard_threshold 0.5 \
 		-work-dir ~/pureScratch/nextflow-intermediates2/ \
+		-resume
+
+
+dayhoff12:
+	PEPTIDE_KSIZE=12
+	OUTDIR=
+	nextflow run \
+		nf-core/kmermaid \
+		-r olgabot/khtools-extract-coding \
+		-latest \
+		-profile czbiohub_local,docker \
+		--read_singles '/home/olga/data_lg/kmer-hashing/brawand2011/nfcore-rnaseq-single-end/allspecies/trim_galore/*.fq.gz' \
+		--read_pairs   '/home/olga/data_lg/kmer-hashing/brawand2011/nfcore-rnaseq-paired-end/allspecies/trim_galore/*{1_val_1,2_val_2}.fq.gz' \
+		--custom_config_base ~/code/nf-core/configs \
+		--molecules dna,protein,dayhoff \
+		--peptide_fasta ~/data_lg/czbiohub-reference/ensembl/release-97/fasta/homo_sapiens/pep/Homo_sapiens.GRCh38.pep.all.fa.gz \
+		--ksizes 27,33 \
+		--log2_sketch_sizes 12,14 \
+		--bloomfilter_tablesize '1e8' \
+		--extract_coding_peptide_ksize 12 \
+		--extract_coding_peptide_molecule dayhoff \
+		--outdir ${OUTDIR_BASE}/results_dayhoff${PEPTIDE_KSIZE}_extract_coding_jaccard_threshold05\
+		--extract_coding_jaccard_threshold 0.5 \
+		-work-dir ~/pureScratch/nextflow-intermediates-nosudo/ \
 		-resume
 
 
