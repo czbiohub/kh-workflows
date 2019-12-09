@@ -8,19 +8,19 @@ SPECIES_OLGA=human
 # Parent directory of all outputs
 OUTDIR_BASE=/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq
 
-COMMON_FLAGS=czbiohub/rnaseq \
-								-r olgabot/merged-gzip-gffread-transgenes \
+COMMON_FLAGS=-r 1.4 \
                 -latest \
                 -resume \
                 -profile docker,czbiohub_local \
-								--saveAlignedIntermediates \
                 --saveTrimmed \
-                -work-dir ~/ibm_lg/kmer-hashing/nextflow-intermediates/ \
-                --custom_config_base ~/code/nf-core/configs \
+		--saveAlignedIntermediates \
+		--saveUnaligned \
+                -work-dir /home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/ \
+                --custom_config_base /home/olga/code/nf-core/configs \
                 --pseudo_aligner salmon \
                 --email olga.botvinnik@czbiohub.org \
-								--genome GRCh38 \
-								--gencode
+		--genome GRCh38 \
+		--gencode
 
 all: paired_end single_end
 
