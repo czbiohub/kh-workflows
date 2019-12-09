@@ -1,35 +1,43 @@
 
 
+OUTDIR_BASE=~/data_lg/kmer-hashing//brawand2011/rnaseq/
+PAIRED=/mnt/ibm_lg/olga/kmer-hashing/brawand2011/rawdata/paired_end
+SINGLE=/mnt/ibm_lg/olga/kmer-hashing/brawand2011/rawdata/single_end
+
 SPECIES=hsa
 GENOME=GRCh38
 
+all: paired_end single_end
+
 paired_end:
 	nextflow run nf-core/rnaseq \
-		-r dev \
+		-r 1.4.2 \
 		-latest \
 		-resume \
-		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/paired_end/*{1,2}.fastq.gz' \
 		-profile docker,czbiohub_local \
 		--saveTrimmed \
-		--outdir "/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq-paired-end/allspecies/" \
-		-work-dir "/home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/" \
+		--reads ${PAIRED}/'*{R1,R2}.fastq.gz' \
+		--outdir ${OUTDIR_BASE}/paired/allspecies \
+		-work-dir "/home/olga/pureScratch//nextflow-intermediates-nosudo/" \
 		--custom_config_base "/home/olga/code/nf-core/configs" \
 		--pseudo_aligner salmon \
 		--genome GRCh38 \
+		--skipQC \
 		--email olga.botvinnik@czbiohub.org
 
 single_end:
 	nextflow run nf-core/rnaseq \
-		-r dev \
+		-r 1.4.2 \
 		-latest \
 		-resume \
-		--reads '/home/olga/ibm_lg/sra-explorer/brawand2011/single_end/*.fastq.gz' \
 		-profile docker,czbiohub_local \
 		--saveTrimmed \
-		--outdir "/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq-single-end/allspecies/" \
-		-work-dir "/home/olga/ibm_lg/kmer-hashing/nextflow-intermediates/" \
+		--reads ${SINGLE}/'*R1.fastq.gz' \
+		--outdir ${OUTDIR_BASE}/paired/allspecies \
+		-work-dir "/home/olga/pureScratch//nextflow-intermediates-nosudo/" \
 		--custom_config_base "/home/olga/code/nf-core/configs" \
 		--pseudo_aligner salmon \
 		--genome GRCh38 \
 		--email olga.botvinnik@czbiohub.org \
+		--skipQC \
 		--singleEnd

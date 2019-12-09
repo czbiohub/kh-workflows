@@ -1,16 +1,12 @@
 # brawand2011 naming
-SPECIES=ptr
-
-# igenomes naming
-GENOME=CHIMP2.1.4
+SPECIES=ppy
 
 # Olga's naming
-SPECIES_OLGA=chimpanzee
+SPECIES_OLGA=orangutan
 
 OUTDIR_BASE=/home/olga/ibm_lg/kmer-hashing/brawand2011/nfcore-rnaseq
 
 COMMON_FLAGS=-r 1.4 \
-                -latest \
                 -resume \
                 -profile docker,czbiohub_local \
                 --saveTrimmed \
@@ -20,10 +16,10 @@ COMMON_FLAGS=-r 1.4 \
                 --custom_config_base /home/olga/code/nf-core/configs \
                 --pseudo_aligner salmon \
                 --compressedReference \
-                --fasta /home/olga/data_lg/czbiohub-reference/ncbi/genomes/refseq/vertebrate_mammalian/Pan_troglodytes/GCA_002880755.3/GCA_002880755.3_Clint_PTRv2_genomic.fna.gz \
-                --gtf /home/olga/data_lg/czbiohub-reference/ncbi/genomes/refseq/vertebrate_mammalian/Pan_troglodytes/GCA_002880755.3/GCA_002880755.3_Clint_PTRv2_genomic.gtf.gz \
+                --fasta /home/olga/data_lg/czbiohub-reference/ensembl/release-97/fasta/pongo_abelii/dna_index/Pongo_abelii.PPYG2.dna.toplevel.fa.gz \
+                --gtf /home/olga/data_lg/czbiohub-reference/ensembl/release-97/gtf/pongo_abelii/Pongo_abelii.PPYG2.97.gtf.gz \
                 --email olga.botvinnik@czbiohub.org \
-                --fc_group_features_type gbkey \
+                --fc_group_features_type gene_biotype \
                 --fc_extra_attributes gene_id \
 
 
