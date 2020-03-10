@@ -1,3 +1,8 @@
+bam2fq:
+	cd /home/saba/fastqbams \
+		for file in *.bam; do samtools bam2fq $file -s ~/fastqbams/$file.fq; done 
+
+
 run:
 	nextflow run nf-core/kmermaid \
 		--read_singles '/home/saba/fastqbams/*.fq' \
