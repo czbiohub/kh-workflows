@@ -16,7 +16,7 @@ COMMON_FLAGS=-r 1.4 \
                 --saveTrimmed \
 		--saveAlignedIntermediates \
 		--saveUnaligned \
-                -work-dir /home/lekha/data_lg/nextflow-intermediates/ \
+                -work-dir /data_lg/nextflow-intermediates/ \
                 --custom_config_base /data_sm/home/olga_ibm/code/nf-core/configs \
                 --pseudo_aligner salmon \
                 --compressedReference \
