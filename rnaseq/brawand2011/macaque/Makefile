@@ -16,12 +16,12 @@ COMMON_FLAGS=-r 1.4 \
                 --saveTrimmed \
 		--saveAlignedIntermediates \
 		--saveUnaligned \
-                -work-dir /home/lekha/data_lg/nextflow-intermediates/ \
-                --custom_config_base data_sm/home/olga/code/nf-core/configs \
+                -work-dir /data_lg/nextflow-intermediates/ \
+                --custom_config_base /data_sm/home/olga_ibm/code/nf-core/configs \
                 --pseudo_aligner salmon \
                 --compressedReference \
-                --fasta data_sm/home/olga_ibm/data_lg/czbiohub-reference/ensembl/release-97/fasta/macaca_mulatta/dna_index/Macaca_mulatta.Mmul_8.0.1.dna.toplevel.fa.gz \
-                --gtf data_sm/home/olga_ibm/data_lg/czbiohub-reference/ensembl/release-97/gtf/macaca_mulatta/Macaca_mulatta.Mmul_8.0.1.97.gtf.gz \
+                --fasta /data_sm/home/olga_ibm/data_lg/czbiohub-reference/ensembl/release-97/fasta/macaca_mulatta/dna_index/Macaca_mulatta.Mmul_8.0.1.dna.toplevel.fa.gz \
+                --gtf /data_sm/home/olga_ibm/data_lg/czbiohub-reference/ensembl/release-97/gtf/macaca_mulatta/Macaca_mulatta.Mmul_8.0.1.97.gtf.gz \
                 --email olga.botvinnik@czbiohub.org \
                 --fc_group_features_type gene_biotype \
                 --fc_extra_attributes gene_id \
