@@ -10,7 +10,7 @@ WORK_DIR=/home/olga/data_sm/nextflow-intermediates-lrrr
 COMMON_FLAGS=nf-core/kmermaid \
 		-r olgabot/fastp \
 		-latest \
-		-profile docker \
+		-profile docker,czbiohub_local \
 		--molecules dna,protein,dayhoff,hp \
 		--ksizes '21,27,33,39,51,63,93' \
 		--log2_sketch_sizes 14 \
@@ -19,7 +19,8 @@ COMMON_FLAGS=nf-core/kmermaid \
 		--extract_coding_peptide_ksize 15 \
 		-resume \
 		-with-tower \
-		--track_abundance
+		--track_abundance \
+		--custom_config_base ${HOME}/code/nf-core/configs 
 
 
 no_k2g_uniprot:
