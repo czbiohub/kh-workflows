@@ -17,7 +17,7 @@ COMMON_FLAGS=-r 1.4 \
 		--saveAlignedIntermediates \
 		--saveUnaligned \
                 -work-dir /home/lekha/data_lg/nextflow-intermediates/ \
-                --custom_config_base /data_sm/home/olga/code/nf-core/configs \
+                --custom_config_base /data_sm/home/olga_ibm/code/nf-core/configs \
                 --pseudo_aligner salmon \
                 --compressedReference \
                 --fasta /data_sm/home/olga_ibm/data_lg/czbiohub-reference/ensembl/release-97/fasta/macaca_mulatta/dna_index/Macaca_mulatta.Mmul_8.0.1.dna.toplevel.fa.gz \
