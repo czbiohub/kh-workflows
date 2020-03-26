@@ -1,4 +1,4 @@
-BASE=/mnt/ibm_lg/olga/kmer-hashing/golumbeanu2018
+BASE=/mnt/data_lg/olga/kmer-hashing/golumbeanu2018
 PEPTIDE_DIR=${BASE}/rawdata/peptide-fastas
 NO_K2G_FASTA=${PEPTIDE_DIR}/KS_UniProt_HumanProteomeSPonly_HIV_KtoG_appended_KS20200323correct__no_K2G.fasta
 K2G_FASTA=${PEPTIDE_DIR}/KS_UniProt_HumanProteomeSPonly_HIV_KtoG_appended_KS20200323correct__bottom197lines.fasta
