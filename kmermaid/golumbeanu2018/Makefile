@@ -27,7 +27,7 @@ no_k2g_uniprot:
 	nextflow run \
 		${COMMON_FLAGS} \
 		--outdir ${OUTDIR_BASE}/$@ \
-		--extract_coding_peptide_fasta ${NO_K2G_FASTA}
+		--peptide_fasta ${NO_K2G_FASTA}
 
 
 
@@ -35,6 +35,6 @@ with_k2g_uniprot:
 	nextflow run \
 		${COMMON_FLAGS} \
 		--outdir ${OUTDIR_BASE}/$@ \
-		--extract_coding_peptide_fasta ${K2G_FASTA}
+		--peptide_fasta ${K2G_FASTA}
 
 
