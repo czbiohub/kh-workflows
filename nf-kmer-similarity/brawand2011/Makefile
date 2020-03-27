@@ -1,5 +1,9 @@
 
 
+RAWDATA=/mnt/ibm_lg/olga/kmer-hashing/brawand2011/rawdata
+PAIRED=${RAWDATA}/paired_end
+SINGLE=${RAWDATA}/single_end
+
 BRAWAND2011=/home/olga/ibm_lg/kmer-hashing/brawand2011
 
 local:
@@ -31,3 +35,37 @@ local_newksizes:
 		--custom_config_base ${HOME}/code/nf-core/configs/ \
 		--outdir ${BRAWAND2011}/kmermaid/ \
 		-resume --max-time 8h
+
+UNIPROT_OPISTHOKONTA=/home/olga/data_lg/czbiohub-reference/uniprot/releases/2019_11/manually_downloaded/uniprot-reviewed_yes+taxonomy_2759.fasta.gz
+UNIPROT_UNIREF=/home/olga/data_lg/czbiohub-reference/uniprot/releases/2019_11/uniref/uniref100/uniref100.fasta.gz
+
+KMERMAID_FLAGS=		nf-core/kmermaid \
+		-r olgabot/fastp \
+		-latest \
+		--read_pairs ${PAIRED}/'*{R1,R2}.fastq.gz' \
+		--read_singles ${SINGLE}/'*.fastq.gz' \
+		-profile czbiohub_local \
+                --log2_sketch_sizes 14 \
+		--ksizes 33,36,39,42,45 \
+		--molecules dayhoff \
+		--extract_coding_peptide_ksize 9 \
+		--extract_coding_jaccard_threshold 0.95 \
+		--custom_config_base ${HOME}/code/nf-core/configs/ \
+		-resume \
+		--max-time 8h \
+		--max_cpus 32 \
+		-with-tower
+
+
+uniprot_opisthokonta:
+	nextflow run \
+		${KMERMAID_FLAGS} \
+		--peptide_fasta ${UNIPROT_OPISTHOKONTA} \
+		--outdir ${BRAWAND2011}/kmermaid_$@/ \
+
+uniprot_uniref:
+	nextflow run \
+		${KMERMAID_FLAGS} \
+		--peptide_fasta ${UNIPROT_UNIREF} \
+		--outdir ${BRAWAND2011}/kmermaid_$@/
+
