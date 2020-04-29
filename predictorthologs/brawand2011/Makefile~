@@ -1,0 +1,14 @@
+REFERENCE_PROTEIN_FASTA=/home/olga/data_lg/czbiohub-reference/ncbi/refseq/releases/refseq-release98-2020-02-06/vertebrate_mammalian/vertebrate_mammalian_concatenated__np_only.faa.gz
+
+
+OUTDIR_BASE=${HOME}/data_sm/tabula-microcebus/analyses/predictorthologs/xspecies-lung---protein-molecules-allksizes
+WORKFLOW=czbiohub/nf-predictorthologs -r dev -latest
+COMMON_FLAGS=${WORKFLOW} \
+                -work-dir ${HOME}/data_sm/nextflow-intermediates-lrrr/ \
+                -profile docker \
+                --reference_protein_fasta ${REFERENCE_PROTEIN_FASTA} \
+                --protein_searcher "sourmash" \
+                -resume \
+                --diff_hash_expression \
+                -with-tower \
+                --diff_hash_with_abundance \
