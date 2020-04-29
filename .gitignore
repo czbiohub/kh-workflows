@@ -1,3 +1,6 @@
+# Emacs temp files
+*~
+
 .git/
 .nextflow*
 .idea*
