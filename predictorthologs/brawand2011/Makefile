@@ -6,7 +6,7 @@ WORKFLOW=czbiohub/nf-predictorthologs -r olgabot/filter-bam-with-hashes -latest
 COMMON_FLAGS=${WORKFLOW} \
                 -work-dir ${HOME}/data_sm/nextflow-intermediates-lrrr/ \
                 -profile docker \
-                --reference_protein_fasta ${REFERENCE_PROTEIN_FASTA} \
+                --proteome_search_fasta ${REFERENCE_PROTEIN_FASTA} \
                 --protein_searcher "sourmash" \
 		--sourmash_ksize 27 \
 		--sourmash_molecule 'dayhoff' \
@@ -17,6 +17,8 @@ COMMON_FLAGS=${WORKFLOW} \
 		--diff_hash_inverse_regularization_strength 1 \
 		-with-tower \
 		--csv molecule-dayhoff_ksize-27_log2sketchsize-14.csv \
+		--input_is_protein \
+		--filter_bam_hashes \
 
 run:
 	nextflow run \
