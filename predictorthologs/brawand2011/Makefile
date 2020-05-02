@@ -12,7 +12,6 @@ COMMON_FLAGS=${WORKFLOW} \
 		--sourmash_molecule 'dayhoff' \
 		-resume \
                 --diff_hash_expression \
-                --diff_hash_with_abundance \
 		--diff_hash_penalty 'l2' \
 		--diff_hash_inverse_regularization_strength 1 \
 		-with-tower \
@@ -23,7 +22,8 @@ COMMON_FLAGS=${WORKFLOW} \
 run:
 	nextflow run \
 		${COMMON_FLAGS} \
-		--outdir ${OUTDIR_BASE}/$@/
+		--outdir ${OUTDIR_BASE}/$@/ \
+		-dump-channels ch_read_ids_mapped,ch_hash_seqs_and_their_aligned_read_ids,ch_group_to_hashes_for_joining__ch_protein_seq_from_hash2kmer
 
 
 
