@@ -40,20 +40,20 @@ UNIPROT_OPISTHOKONTA=/home/olga/data_lg/czbiohub-reference/uniprot/releases/2019
 UNIPROT_UNIREF=/home/olga/data_lg/czbiohub-reference/uniprot/releases/2019_11/uniref/uniref100/uniref100.fasta.gz
 
 KMERMAID_FLAGS=		nf-core/kmermaid \
-		-r olgabot/fastp \
+		-r dev \
 		-latest \
 		--read_pairs ${PAIRED}/'*{R1,R2}.fastq.gz' \
 		--read_singles ${SINGLE}/'*.fastq.gz' \
 		-profile czbiohub_local \
                 --log2_sketch_sizes 14 \
-		--ksizes 33,36,39,42,45 \
-		--molecules dayhoff \
+		--ksizes 21,24,27,30,33,36,39,42,45,48,51,54,57,60,63 \
+		--molecules dna,protein,dayhoff \
 		--extract_coding_peptide_ksize 9 \
 		--extract_coding_jaccard_threshold 0.95 \
 		--custom_config_base ${HOME}/code/nf-core/configs/ \
 		-resume \
-		--max-time 8h \
-		--max_cpus 32 \
+		--max-time 96h \
+		--max_cpus 64 \
 		-with-tower
 
 
@@ -67,5 +67,24 @@ uniprot_uniref:
 	nextflow run \
 		${KMERMAID_FLAGS} \
 		--peptide_fasta ${UNIPROT_UNIREF} \
+		--outdir ${BRAWAND2011}/kmermaid_$@/
+
+
+existing_peptides_uniprot_opisthokonta:
+	nextflow run \
+		nf-core/kmermaid \
+		-r olgabot/input-protein-fastas \
+		-latest \
+		--protein_fastas ${BRAWAND2011}/kmermaid_uniprot_opisthokonta/extract_coding/'*__coding_reads_peptides.fasta' \
+		-profile czbiohub_local \
+                --log2_sketch_sizes 14 \
+		--ksizes 21,24,27,30,33,36,39,42,45,48,51,54,57,60,63 \
+		--molecules protein,dayhoff \
+		--custom_config_base ${HOME}/code/nf-core/configs/ \
+		-resume \
+		--max-time 96h \
+		--max_cpus 64 \
+		-with-tower \
+		--track_abundance \
 		--outdir ${BRAWAND2011}/kmermaid_$@/
 
