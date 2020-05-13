@@ -46,10 +46,10 @@ KMERMAID_FLAGS=		nf-core/kmermaid \
 		--read_singles ${SINGLE}/'*.fastq.gz' \
 		-profile czbiohub_local \
                 --log2_sketch_sizes 14 \
-		--ksizes 21,24,27,30,33,36,39,42,45,48,51,54,57,60,63 \
-		--molecules dna,protein,dayhoff \
-		--extract_coding_peptide_ksize 9 \
-		--extract_coding_jaccard_threshold 0.95 \
+		--ksizes 21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,75,78,81,84,87,90,93,96,99,102,105,108,111,114,117,120 \
+		--molecules dna,protein,dayhoff,hp \
+		--translate_peptide_ksize 9 \
+		--translate_jaccard_threshold 0.95 \
 		--custom_config_base ${HOME}/code/nf-core/configs/ \
 		-resume \
 		--max-time 96h \
