@@ -3,7 +3,7 @@ PEPTIDE_DIR=/home/pranathi/code/k2g/
 NO_K2G_FASTA=${PEPTIDE_DIR}/KS_UniProt_HumanProteomeSPonly_HIV_KtoG_appended_KS20200323correct__non-k2g.fasta
 K2G_FASTA=${PEPTIDE_DIR}/KS_UniProt_HumanProteomeSPonly_HIV_KtoG_appended_KS20200323correct__k2g.fasta
 DATA_DIR=${BASE}/rawdata/fastqs
-OUTDIR_BASE=mnt/ibm_lg/pranathi/nextflow-out-lrrr-k2g
+OUTDIR_BASE=/mnt/ibm_lg/pranathi/nextflow-out-lrrr-k2g
 WORK_DIR=/mnt/ibm_lg/pranathi/nextflow-work-lrrr-k2g
 
 COMMON_FLAGS=nf-core/kmermaid \
