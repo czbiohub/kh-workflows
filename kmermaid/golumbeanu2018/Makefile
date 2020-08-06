@@ -12,7 +12,7 @@ COMMON_FLAGS=nf-core/kmermaid \
 		-profile docker \
 		--molecules dna,protein,dayhoff,hp \
 		--ksizes '21,27,33,39,51,63,93' \
-		--sketch_num_hashes_log2 14 \
+		--sketch_scaled 10,50,100,500 \
 		--read_singles ${DATA_DIR}/'*.fastq.gz' \
 		-work-dir ${WORK_DIR} \
 		--translate_peptide_ksize 15 \
@@ -34,5 +34,4 @@ with_k2g_uniprot:
 		${COMMON_FLAGS} \
 		--outdir ${OUTDIR_BASE}/$@ \
 		--peptide_fasta ${K2G_FASTA}
-
 
