@@ -12,7 +12,7 @@ COMMON_FLAGS=nf-core/kmermaid \
 		-latest \
 		--molecules dna,protein,dayhoff,hp \
 		--ksizes '21,27,33,39,51,63,93' \
-		--sketch_scaled 10,50,100,500 \
+		--sketch_scaled 50,100,500 \
 		--read_singles ${DATA_DIR}/'*.fastq.gz' \
 		-w ${WORK_DIR} \
 		--save_intermediate_dir /data_lg/pranathi/k2g_intermediate/ \
